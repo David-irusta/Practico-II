@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Lista de Personas</h1>
+    
+    {% if personas %}
+        <ul>
+            {% for persona in personas %}
+                <li>{{ persona }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay personas registradas.</p>
+    {% endif %}
+    
+{% endblock content %}
