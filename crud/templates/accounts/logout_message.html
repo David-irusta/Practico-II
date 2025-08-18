@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <form method="post" action="{% url 'account:logout_message' %}">
+    {% csrf_token %}
+    <h2>{{ title }}</h2>
+    {{ form.as_p }}
+    <h2>Confirma que desea desloguarse?</h2>
+    <button type="submit">Log out</button>
+    <a href="{% url 'persona:lista' %}">Cancelar</a>
+    </form>
+{% endblock content %}
+    
