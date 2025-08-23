@@ -19,6 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('persona/', include('persona.urls')),
-    path('accounts/', include('accounts.urls')),
+    path('persona/', include('persona.urls')),  # Include the persona app URLs
+    path('accounts/', include('accounts.urls'))  # Include the accounts app URLs
 ]

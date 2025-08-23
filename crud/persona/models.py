@@ -1,20 +1,19 @@
 from django.db import models
-from oficina.models import Oficina
 
+# Create your models here.
 class Persona(models.Model):
-    apellido = models.CharField(verbose_name='Apellido', max_length=50)
-    nombre = models.CharField(verbose_name='Nombre Completo', max_length=100)
-    edad = models.IntegerField(verbose_name='Edad')
-    oficina = models.ForeignKey(Oficina, 
-    verbose_name= 'Oficina asignada', on_delete= models.PROTECT, related_name= "personas", null= True, blank = True)
+    """Model definition for Persona."""
+
+    nombre = models.CharField(verbose_name="Nombre completo", max_length=50)
+    edad = models.IntegerField(verbose_name="Edad")
+    email = models.EmailField(verbose_name="Correo electronico", max_length=254)
 
     class Meta:
-        verbose_name = 'Persona'
-        verbose_name_plural = 'Personas'
-        ordering = ['apellido', 'nombre']
+        """Meta definition for Persona."""
+
+        verbose_name =  'Persona'
+        verbose_name_plural =  'Personas'
 
     def __str__(self):
-        return f'{self.apellido}, {self.nombre} - Oficina: {self.oficina.nombre}'
-
-
-
+        """Unicode representation of Persona."""
+        return f"{self.nombre} - {self.email}"

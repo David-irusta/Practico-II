@@ -1,37 +1,37 @@
 from django.urls import path
 from .views import *
 
-app_name = 'persona'
+app_name = "persona"
 
 urlpatterns = [
     path(
         'lista/',
-        PersonaListview.as_view(),
-        name = 'lista'
-    ),
-    path(
-        'buscar/',
-        PersonaSearchView.as_view(),
-        name = 'buscar'
+        PersonaListView.as_view(),
+        name='lista'
     ),
     path(
         'detalle/<int:pk>/',
         PersonaDetailView.as_view(),
-        name = 'detalle'
+        name='detalle'
     ),
     path(
         'crear/',
         PersonaCreateView.as_view(),
-        name = 'crear'
+        name='crear'
     ),
     path(
         'editar/<int:pk>/',
         PersonaUpdateView.as_view(),
-        name = 'editar'
+        name='editar'
     ),
     path(
         'eliminar/<int:pk>/',
         PersonaDeleteView.as_view(),
-        name = 'eliminar'
+        name='eliminar'
+    ),
+    path(
+        'buscar/',
+        PersonaSearchView.as_view(),
+        name='buscar'
     ),
 ]

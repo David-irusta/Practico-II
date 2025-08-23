@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-
     <h1>Detalle de la persona</h1>
-    <p><strong>Apellido:</strong>{{ persona.apellido }}</p>
-    <p><strong>Nombre:</strong>{{ persona.nombre }}</p>
-    <p><strong>Oficina:</strong>{{ persona.oficina }}</p>
+    <p><strong>Nombre: </strong>{{ persona.nombre }}</p>
+    <p><strong>Edad: </strong>{{ persona.edad }}</p>
+    <p><strong>Email: </strong>{{ persona.email }}</p>
 
+    <a href="{% url 'persona:lista' %}">Volver a la lista</a>
 {% endblock content %}
     

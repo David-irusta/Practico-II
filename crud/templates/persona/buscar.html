@@ -1,19 +1,15 @@
 {% extends 'base.html' %}
-
-
 {% block content %}
-    <h1>Buscar</h1>
-    
+    <h1>Buscar Persona</h1>
     {% if personas %}
+        <h2>Resultados de la búsqueda:</h2>
         <ul>
-            
             {% for persona in personas %}
                 <li>{{ persona }}</li>
-            {% endfor %}
-                
+            {% endfor %}       
         </ul>
+    {% else %}
+        <p>No se encontraron personas que coincidan con la búsqueda.</p>
     {% endif %}
-        
-    
 {% endblock content %}
     
