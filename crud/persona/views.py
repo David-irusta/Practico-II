@@ -10,7 +10,6 @@ class PersonaListView(LoginRequiredMixin, ListView):
     context_object_name = "personas"
     paginate_by = 10
 
-
 class PersonaDetailView(LoginRequiredMixin, DetailView):
     model = Persona
     template_name = "persona/detalle.html"

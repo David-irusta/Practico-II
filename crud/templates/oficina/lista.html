@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center><h1>Listado de oficinas</h1></center>
+    {% if oficinas %}
+        <ul>
+            {% for oficina in oficinas %}
+                <span>
+                    <li class="list-group-item d-flex justify-content-between align-items-center"></li>
+                    <li>
+                        {{oficina.nombre}} ---
+                        <a href="{% url 'oficina:detalle' oficina.id %}"class="btn btn-sm btn-primary">Ver</a> - 
+                        <a href="{% url 'oficina:editar' oficina.id %}" class="btn btn-sm btn-warning">Editar</a> - 
+                        <a href="{% url 'oficina:eliminar' oficina.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </li>
+                </span>
+            {% endfor %}
+        </ul>
+        {% include 'paginator.html' %}
+    {% else %}
+        <p>No hay oficinas registradas.</p>
+    {% endif %}
+{% endblock content %}
+    

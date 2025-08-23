@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <h1>Buscar oficina</h1>
+    
+    {% if oficinas %}
+        <h2>Resultados de la busqueda:</h2>
+        <ul>
+            
+            {% for oficina in oficinas %}
+                <li>{{ oficina }}</li>
+            {% endfor %}  
+        </ul>
+    {% else %}
+        <p>No se encontraron oficinas que coincidan con la búsqueda.</p>
+    {% endif %}    
+{% endblock content %}
+    
