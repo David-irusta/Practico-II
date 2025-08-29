@@ -1,11 +1,9 @@
-<!-- Plantilla anterior comentada correctamente para evitar conflictos con los bloques de Django -->
-
 {% extends 'base.html' %}
 {% block content %}
     <div><center><h1>Listado de personas</h1></center></div>
     <div class="d-flex justify-content-center mt-1">
         <div class="card shadow p-3" style="width: 500px; margin-bottom: 1px;">
-            {% if personas|default_if_none:"" %}
+            {% if personas %}
                 <ul class="list-group">
                     {% for persona in personas %}
                         <li class="list-group-item d-flex justify-content-between align-items-center">
