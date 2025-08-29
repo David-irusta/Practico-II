@@ -22,5 +22,6 @@ urlpatterns = [
     path('persona/', include('persona.urls')),  # Include the persona app URLs
     path('accounts/', include('allauth.urls')),  # Include the accounts app URLs
     path('oficina/', include('oficina.urls')),   # Include the oficina app URLs
-    path('captcha/', include('captcha.urls'))
+    path('captcha/', include('captcha.urls')),
+    path('', include('persona.urls'))
 ]

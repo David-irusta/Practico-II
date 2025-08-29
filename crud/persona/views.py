@@ -53,3 +53,6 @@ class PersonaSearchView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['query'] = self.request.GET.get('q', '')
         return context
+    
+def post_list(request):
+    return render(request, 'persona/index.html', {})

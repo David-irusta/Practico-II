@@ -34,4 +34,7 @@ urlpatterns = [
         PersonaSearchView.as_view(),
         name='buscar'
     ),
+    path('', 
+         post_list, 
+         name='index'),
 ]

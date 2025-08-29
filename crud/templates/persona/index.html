@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    /* Fondo */
+    background-color: #38A3A5 ;
+    background-size: cover;   /* hace que ocupe toda la pantalla */
+    background-position: center; /* centra la imagen */
+    background-attachment: fixed; /* efecto parallax (opcional) */
+    color: white; /* texto blanco para que contraste */
+  }
+  .contenido {
+    padding: 50px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* capa semitransparente */
+    border-radius: 10px;
+    margin: 50px;
+  }
+</style>
+<div class="contenido">
+  <h1>Hola, este es mi proyecto CRUD</h1>
+  <p>Te dejo enlaces para que puedas acceder o registrate</p>
+  <a href="{% url 'account_login' %}" class="btn btn-sm btn-primary">Loguearse</a>
+  <a href="{% url 'account_signup' %}" class="btn btn-sm btn-primary">Registrarse</a>
+</div>
+{% endblock %}
+    
