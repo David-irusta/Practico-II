@@ -1,32 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<style>
-    .container{
-        background-color: black;
-    }
-</style>
-    <div><center><h1>Listado de personas</h1></center></div>
-    <div class="d-flex justify-content-center mt-5">
-        <div class="card shadow p-4" style="width: 500px; margin-bottom: 30px;">
-    </style>
     {% if personas %}
-        <ul class="list-group">
+        <ul>
             {% for persona in personas %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ persona.nombre }} 
-                    <div>
-                        <a href="{% url 'persona:detalle' persona.id %}"class="btn btn-sm btn-primary">Ver</a> -
-                        <a href="{% url 'persona:editar' persona.id %}"class="btn btn-sm btn-warning">Modificar</a> -
-                        <a href="{% url 'persona:eliminar' persona.id %}" class="btn btn-sm btn-danger">Eliminar</a>
-                    </div>
+                <li>
+                    {{persona}}
                 </li>
             {% endfor %}
         </ul>
-        <div class="d-flex justify-content-center mt-3">
-            {% include 'paginator.html' %}
-        </div>
+        {% include 'paginator.html' %}
     {% else %}
-        <p class="text-center mt-3">No hay personas registradas.</p>
         <p>No hay personas registradas.</p>
     {% endif %}
         
