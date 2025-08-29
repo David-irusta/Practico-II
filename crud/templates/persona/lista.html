@@ -1,17 +1,30 @@
+<!-- Plantilla anterior comentada correctamente para evitar conflictos con los bloques de Django -->
+
 {% extends 'base.html' %}
 {% block content %}
-    {% if personas %}
-        <ul>
-            {% for persona in personas %}
-                <li>
-                    {{persona}}
-                </li>
-            {% endfor %}
-        </ul>
-        {% include 'paginator.html' %}
-    {% else %}
-        <p>No hay personas registradas.</p>
-    {% endif %}
-        
+    <div><center><h1>Listado de personas</h1></center></div>
+    <div class="d-flex justify-content-center mt-1">
+        <div class="card shadow p-3" style="width: 500px; margin-bottom: 1px;">
+            {% if personas|default_if_none:"" %}
+                <ul class="list-group">
+                    {% for persona in personas %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ persona.nombre }} 
+                            <div>
+                                <a href="{% url 'persona:detalle' persona.id %}" class="btn btn-sm btn-primary">Ver</a> -
+                                <a href="{% url 'persona:editar' persona.id %}" class="btn btn-sm btn-warning">Modificar</a> -
+                                <a href="{% url 'persona:eliminar' persona.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="d-flex justify-content-center mt-1">
+                    {% include 'paginator.html' %}
+                </div>
+            {% else %}
+                <p class="text-center mt-3">No hay personas registradas.</p>
+            {% endif %}
+        </div>
+    </div>
 {% endblock content %}
-    
+
