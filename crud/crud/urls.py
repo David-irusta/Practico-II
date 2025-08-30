@@ -19,9 +19,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('persona/', include('persona.urls')),  # Include the persona app URLs
+    path('persona/', include('persona.urls', 'persona1')),  # Include the persona app URLs
     path('accounts/', include('allauth.urls')),  # Include the accounts app URLs
     path('oficina/', include('oficina.urls')),   # Include the oficina app URLs
-    path('captcha/', include('captcha.urls')),
-    path('', include('persona.urls'))
+    path('captcha/', include('captcha.urls')),   # Include the captcha app URLs
+    path('', include('persona.urls', 'persona2'))  #Include template inicio
 ]

@@ -2,16 +2,16 @@
 {% block content %}
     <div><center><h1>Listado de personas</h1></center></div>
     <div class="d-flex justify-content-center mt-1">
-        <div class="card shadow p-3" style="width: 500px; margin-bottom: 1px;">
+        <div class="card shadow p-3" style="width: 500px; margin-bottom: 2px;">
             {% if personas %}
                 <ul class="list-group">
                     {% for persona in personas %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item d-flex justify-content-between align-items-center d-grid gap-2">
                             {{ persona.nombre }} 
                             <div>
                                 <a href="{% url 'persona:detalle' persona.id %}" class="btn btn-sm btn-primary">Ver</a> -
-                                <a href="{% url 'persona:editar' persona.id %}" class="btn btn-sm btn-warning">Modificar</a> -
-                                <a href="{% url 'persona:eliminar' persona.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                                <a href="{% url 'persona:editar' persona.id %}" class="btn btn-sm btn-warning w-5 w-md-auto">Modificar</a> -
+                                <a href="{% url 'persona:eliminar' persona.id %}" class="btn btn-sm btn-danger w-5 w-md-auto">Eliminar</a>
                             </div>
                         </li>
                     {% endfor %}
