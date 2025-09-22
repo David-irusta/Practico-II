@@ -1,0 +1,30 @@
+services: #Servicios
+  #Servicio de base de datos
+  db:
+    image: postgres:15 #Imagen que utilizaremos de (hub.docker.com)
+    env_file:  #Especificamos el archivo de variables de entorno
+      - .env
+    environment: #Especificamos las variables de entorno
+      POSTGRES_DB: ${POSTGRES_DB} #Busca el archivo .env la variable que se llame asi
+      POSTGRES_USER: ${POSTGRES_USER} #Busca el archivo .env la variable que se llame asi
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} #Busca el archivo .env la variable que se llame asi
+    volumes: #Volumenes
+      - db-data:/var/lib/postgresql/data 
+
+  #Servicio de la aplicacion
+  web:
+    build: . #Esto significa que va a hacer una construccion (docker build) en el dockerfile que esta en el mismo directorio
+    command: sh -c "sleep 5 && python manage.py runserver 0.0.0.0:8000" # Comando que se ejecuta al iniciar el contenedor
+    ports:
+      - "8000:8000" #El puerto 8000 de nuestra pc se mapea con el 8000 del container, asi podemos ponernos en contacto con nuestra apliacion
+    volumes:
+      - ./crud:/crud #Mapeamos la carpeta local de nuestro proyecto, con la carpeta /crud dentro del contenedor, asi podemos meter cambios en el codigo y que los mismos se reflejen en tiempo real
+    env_file:  #Archivo con variables de entorno (igual que en el otro servicio)
+      - .env
+    environment: 
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB} #Cadena de conexion a la base de datos
+    depends_on:
+      - db
+
+volumes:
+  db-data: 
